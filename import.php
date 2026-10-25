@@ -106,7 +106,7 @@ if (
             fclose($handle);
             $error = 'The CSV file is empty.';
         } else {
-            // Remove a UTF-8 BOM from the beginning of each header field.
+            
             $normalized = array_map(
                 fn($value) => strtolower(
                     trim(
@@ -132,7 +132,7 @@ if (
                     }
                 }
 
-                // A description and amount column are required.
+                
                 if (
                     !isset($header['description']) ||
                     !isset($header['amount'])
@@ -141,8 +141,7 @@ if (
                     $error = 'CSV must contain description and amount columns.';
                 }
             } else {
-                // Headerless CSV format:
-                // description, amount, type, category, transaction_date
+                
                 $header = [
                     'description' => 0,
                     'amount' => 1,
@@ -239,7 +238,7 @@ if (
                             $category = import_category($description);
                         }
 
-                        // Always assign imported transactions to the logged-in user.
+                        
                         $insert->execute([
                             $description,
                             $amount,

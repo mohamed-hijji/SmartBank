@@ -24,7 +24,7 @@ $allowedPeriods = [3, 6, 12];
 $period = isset($_GET['period']) ? (int)$_GET['period'] : 6;
 if (!in_array($period, $allowedPeriods, true)) $period = 6;
 
-// Selected period: current month plus the preceding months in the chosen range.
+
 $start = new DateTime('first day of this month');
 $start->modify('-' . ($period - 1) . ' months');
 $startDate = $start->format('Y-m-01');

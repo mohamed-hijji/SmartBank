@@ -1,8 +1,6 @@
-```php
-<?php
-// SmartBank authentication and per-account data isolation.
 
-// Configure session security before starting the session.
+<?php
+
 if (session_status() !== PHP_SESSION_ACTIVE) {
     ini_set('session.use_strict_mode', '1');
     ini_set('session.use_only_cookies', '1');
@@ -19,7 +17,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-// Create the database tables and safely add ownership columns.
+
 function smartbank_schema(PDO $pdo): void
 {
     $pdo->exec("
@@ -70,7 +68,7 @@ function smartbank_schema(PDO $pdo): void
     }
 }
 
-// Generate a CSRF token for forms.
+
 function smartbank_csrf(): string
 {
     if (empty($_SESSION['csrf_token'])) {
@@ -80,7 +78,7 @@ function smartbank_csrf(): string
     return $_SESSION['csrf_token'];
 }
 
-// Verify a submitted CSRF token.
+
 function smartbank_verify_csrf(): bool
 {
     $submitted = (string) ($_POST['csrf_token'] ?? '');
@@ -91,7 +89,7 @@ function smartbank_verify_csrf(): bool
         && hash_equals($stored, $submitted);
 }
 
-// Protect pages that require authentication.
+
 function require_login(): void
 {
     if (empty($_SESSION['user_id'])) {
@@ -100,13 +98,13 @@ function require_login(): void
     }
 }
 
-// Get the logged-in user's ID.
+
 function current_user_id(): int
 {
     return (int) ($_SESSION['user_id'] ?? 0);
 }
 
-// Escape output to help prevent cross-site scripting.
+
 function e($value): string
 {
     return htmlspecialchars(
@@ -116,7 +114,7 @@ function e($value): string
     );
 }
 
-// Load the database connection and initialize the schema.
+
 require_once __DIR__ . '/db.php';
 
 smartbank_schema($pdo);

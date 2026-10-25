@@ -112,7 +112,7 @@ if (!smartbank_verify_csrf()) {
     }
 }
 
-// Calculate income and expenses separately.
+
 $income = (float)$pdo->query(
     "SELECT COALESCE(SUM(amount), 0)
      FROM transactions WHERE type = 'income' AND user_id = $userId"
@@ -135,8 +135,7 @@ $categoryTotals = $pdo->query(
      WHERE type = 'expense' AND user_id = $userId GROUP BY category ORDER BY total DESC"
 )->fetchAll();
 
-// Build six consecutive months so the cash-flow chart always has a timeline,
-// even when a month has no transactions.
+
 $monthlyRows = $pdo->query(
     "SELECT DATE_FORMAT(transaction_date, '%Y-%m') AS month_key,
             SUM(CASE WHEN type = 'income' THEN amount ELSE 0 END) AS income_total,

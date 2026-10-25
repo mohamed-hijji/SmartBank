@@ -5,7 +5,7 @@ $userId = current_user_id();
 
 function money($value) { return number_format((float)$value, 2) . ' MAD'; }
 
-// Create the table automatically on first visit; no existing data is changed.
+
 $pdo->exec("CREATE TABLE IF NOT EXISTS savings_goals (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(120) NOT NULL,
