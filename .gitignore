@@ -1,0 +1,37 @@
+
+# Sensitive configuration
+.env
+.env.*
+!.env.example
+config.local.php
+
+# Dependencies
+/vendor/
+/node_modules/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local database exports and backups
+*.sql
+*.sql.gz
+*.bak
+*.backup
+
+# Local development data
+/uploads/
+/cache/
+/tmp/
+
+# IDE settings
+.vscode/
+.idea/
+/db.php
+/style_backup.css/
