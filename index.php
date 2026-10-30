@@ -202,7 +202,7 @@ function money($amount) {
     <main class="main" id="dashboard">
         <header class="topbar">
             <div>
-                <h1>Good morning, <span class="accent-text">SmartBank</span> 👋</h1>
+                <h1> <span class="accent-text">SmartBank</span> </h1>
                 <p class="muted">Your money, organized.</p>
             </div>
             <span class="currency">Currency: MAD</span>
